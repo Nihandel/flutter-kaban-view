@@ -1,10 +1,8 @@
-library flutter_kaban_view;
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
-class KabanView extends StatelessWidget {
-  const KabanView({super.key});
+class KabanItem extends StatelessWidget {
+  const KabanItem({super.key});
 
   @override
   Widget build(BuildContext context) {
