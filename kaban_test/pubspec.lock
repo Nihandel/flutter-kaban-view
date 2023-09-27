@@ -62,13 +62,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_kaban_view:
-    dependency: "direct dev"
-    description:
-      path: "../flutter_kaban_view"
-      relative: true
-    source: path
-    version: "0.0.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -82,6 +75,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  kaban_view:
+    dependency: "direct dev"
+    description:
+      path: "../flutter_kaban_view"
+      relative: true
+    source: path
+    version: "0.0.1"
   lints:
     dependency: transitive
     description:
