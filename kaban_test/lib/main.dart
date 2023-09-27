@@ -10,12 +10,56 @@ class TestKaban extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const KabanView(
+    return KabanView(
       columns: [
-        KabanColumn(color: Colors.red,),
-        KabanColumn(color: Colors.amber,),
-        KabanColumn(color: Colors.pink,),
-        KabanColumn(color: Colors.purple,),
+        KabanColumn(
+          color: Colors.red,
+          title: const Text("Column 1"),
+          trailing: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.menu),
+          ),
+          children: List.generate(
+            9,
+            (index) => const SizedBox(
+              height: 200,
+              child: Text("Test"),
+            ),
+          ),
+        ),
+        KabanColumn(
+          color: Colors.red,
+          title: const Text("Column 2"),
+          children: List.generate(
+            10,
+            (index) => const SizedBox(
+              height: 200,
+              child: Text("Test"),
+            ),
+          ),
+        ),
+        KabanColumn(
+          color: Colors.red,
+          title: const Text("Column 3"),
+          children: List.generate(
+            10,
+            (index) => const SizedBox(
+              height: 200,
+              child: Text("Test"),
+            ),
+          ),
+        ),
+        KabanColumn(
+          showHeader: false,
+          children: [
+            Container(
+                height: 100,
+                width: 100,
+                padding: EdgeInsets.all(8.0),
+                child:
+                    ElevatedButton(onPressed: () {}, child: Icon(Icons.add))),
+          ],
+        )
       ],
     );
   }
