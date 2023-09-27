@@ -2,16 +2,28 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-
 class KabanColumn extends StatelessWidget {
-  const KabanColumn(
+  const KabanColumn._(
       {super.key,
       this.title,
       this.trailing,
-      this.children = const [],
+      required this.showHeader,
+      required this.children,
+      this.color});
+  const KabanColumn.Expanded(
+      {this.title,
+      this.trailing,
+      this.showHeader = true,
+      required this.children,
       this.color,
-      this.showHeader=true});
-
+      super.key});
+  const KabanColumn.Fixed(
+      {this.title,
+      this.trailing,
+      this.showHeader = true,
+      this.color,
+      required this.children,
+      super.key});
   final Widget? title;
   final Widget? trailing;
   final bool showHeader;
@@ -28,14 +40,14 @@ class KabanColumn extends StatelessWidget {
         color: color,
         child: CustomScrollView(
           slivers: [
-            if(showHeader)
-            SliverAppBar(
-              expandedHeight: 70,
-              title: title,
-              floating: true,
-              pinned: true,
-              actions: trailing != null ? List.from([trailing]) : [],
-            ),
+            if (showHeader)
+              SliverAppBar(
+                expandedHeight: 70,
+                title: title,
+                floating: true,
+                pinned: true,
+                actions: trailing != null ? List.from([trailing]) : [],
+              ),
             SliverList(delegate: SliverChildListDelegate(children))
           ],
         ),
