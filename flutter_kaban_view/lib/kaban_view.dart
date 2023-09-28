@@ -18,20 +18,31 @@ class KabanView extends StatelessWidget {
     return SizedBox(
       width: size.width,
       height: size.height,
-      child: CustomScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          slivers: [
-            SliverCrossAxisGroup(
-              slivers: columns
-                  .map((e) => SliverCrossAxisExpanded(
-                        flex: 1,
-                        // flex: e is KabanColumn ? e.flex : 1,
-                        sliver: SliverToBoxAdapter(child: e),
-                      ))
-                  .toList(),
-            ),
-          ]),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(children: columns.map((e) => SizedBox(width: 300,child: e,)).toList()),),
+      // CustomScrollView(
+      //   scrollDirection: Axis.horizontal,
+      //   slivers: [
+      //     SliverFillRemaining(
+      //       child: CustomScrollView(
+      //         shrinkWrap: true,
+      //           physics: const AlwaysScrollableScrollPhysics(),
+      //           scrollDirection: Axis.vertical,
+      //           slivers: [
+      //             SliverCrossAxisGroup(
+      //               slivers: columns
+      //                   .map((e) => SliverConstrainedCrossAxis(
+      //                         maxExtent: 500,
+      //                         // flex: e is KabanColumn ? e.flex : 1,
+      //                         sliver: SliverToBoxAdapter(child: e),
+      //                       ))
+      //                   .toList(),
+      //             ),
+      //           ]),
+      //     )
+      //   ],
+      // ),
     );
   }
 }
