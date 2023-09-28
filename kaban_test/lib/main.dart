@@ -12,7 +12,7 @@ class TestKaban extends StatelessWidget {
   Widget build(BuildContext context) {
     return KabanView(
       columns: [
-        KabanColumn.Fixed(
+        KabanColumn(
           color: Colors.red,
           title: const Text("Column 1"),
           trailing: IconButton(
@@ -27,7 +27,7 @@ class TestKaban extends StatelessWidget {
             ),
           ),
         ),
-        KabanColumn.Expanded(
+        KabanColumn(
           color: Colors.red,
           title: const Text("Column 2"),
           children: List.generate(
@@ -38,7 +38,7 @@ class TestKaban extends StatelessWidget {
             ),
           ),
         ),
-        KabanColumn.Fixed(
+        KabanColumn(
           color: Colors.red,
           title: const Text("Column 3"),
           children: List.generate(
@@ -49,7 +49,7 @@ class TestKaban extends StatelessWidget {
             ),
           ),
         ),
-        KabanColumn.Expanded(
+        KabanColumn(
           showHeader: false,
           children: [
             Container(

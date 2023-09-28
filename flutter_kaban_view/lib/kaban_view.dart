@@ -16,18 +16,22 @@ class KabanView extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return SizedBox(
-        width: size.width,
-        height: size.height,
-        child: CustomScrollView(scrollDirection: Axis.vertical, slivers: [
-          SliverCrossAxisGroup(
-            slivers: columns
-                .map((e) => SliverConstrainedCrossAxis(
-                      maxExtent: 400,
-                      // flex: e is KabanColumn ? e.flex : 1,
-                      sliver: SliverToBoxAdapter(child: e),
-                    ))
-                .toList(),
-          ),
-        ]));
+      width: size.width,
+      height: size.height,
+      child: CustomScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          slivers: [
+            SliverCrossAxisGroup(
+              slivers: columns
+                  .map((e) => SliverCrossAxisExpanded(
+                        flex: 1,
+                        // flex: e is KabanColumn ? e.flex : 1,
+                        sliver: SliverToBoxAdapter(child: e),
+                      ))
+                  .toList(),
+            ),
+          ]),
+    );
   }
 }

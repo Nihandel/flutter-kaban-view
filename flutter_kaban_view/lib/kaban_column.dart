@@ -3,27 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class KabanColumn extends StatelessWidget {
-  const KabanColumn._(
+  const KabanColumn(
       {super.key,
       this.title,
       this.trailing,
-      required this.showHeader,
+      this.showHeader = true,
       required this.children,
       this.color});
-  const KabanColumn.Expanded(
-      {this.title,
-      this.trailing,
-      this.showHeader = true,
-      required this.children,
-      this.color,
-      super.key});
-  const KabanColumn.Fixed(
-      {this.title,
-      this.trailing,
-      this.showHeader = true,
-      this.color,
-      required this.children,
-      super.key});
   final Widget? title;
   final Widget? trailing;
   final bool showHeader;
