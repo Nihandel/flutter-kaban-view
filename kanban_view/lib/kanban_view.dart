@@ -1,7 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/rendering/sliver.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kanban_view/kanban_column.dart';
 

@@ -75,7 +75,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  kaban_view:
+  kanban_view:
     dependency: "direct dev"
     description:
       path: "../kanban_view"
