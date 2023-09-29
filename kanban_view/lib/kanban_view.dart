@@ -1,8 +1,3 @@
-library kaban_view;
-
-export 'kanban_column.dart';
-export 'kanban_item.dart';
-
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
