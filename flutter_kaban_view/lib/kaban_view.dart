@@ -38,8 +38,8 @@ class _KabanViewState extends State<KabanView> {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
   }
-
-  List<double> getSlots(BoxConstraints constraints) {
+  /// custom layout 
+  List<double> _getSlots(BoxConstraints constraints) {
     double maxFlex = children.map((e) => e.flex ?? 1).reduce(
           (value, element) => value += element,
         );
@@ -62,7 +62,7 @@ class _KabanViewState extends State<KabanView> {
   Widget build(BuildContext context) {
     return RepaintBoundary(
       child: LayoutBuilder(builder: (context, constraints) {
-        var slots = getSlots(constraints);
+        var slots = _getSlots(constraints);
         final row = SliverToBoxAdapter(
           child: Row(
               mainAxisSize: MainAxisSize.min,
