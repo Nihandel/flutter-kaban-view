@@ -39,10 +39,6 @@ class _KabanViewState extends State<KabanView> {
     super.didChangeDependencies();
   }
 
-  double getPreferredSize(KabanColumn col) {
-    return col.maxWidth ?? 200;
-  }
-
   List<double> getSlots(BoxConstraints constraints) {
     double maxFlex = children.map((e) => e.flex ?? 1).reduce(
           (value, element) => value += element,
