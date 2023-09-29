@@ -11,8 +11,9 @@ class TestKaban extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return KabanView(
-      columns: [
+      children: [
         KabanColumn(
+          flex: 1,
           color: Colors.red,
           title: const Text("Column 1"),
           trailing: IconButton(
@@ -28,6 +29,7 @@ class TestKaban extends StatelessWidget {
           ),
         ),
         KabanColumn(
+          flex: 2,
           color: Colors.red,
           title: const Text("Column 2"),
           children: List.generate(
@@ -39,6 +41,7 @@ class TestKaban extends StatelessWidget {
           ),
         ),
         KabanColumn(
+          maxWidth: 300,
           color: Colors.red,
           title: const Text("Column 3"),
           children: List.generate(
@@ -50,6 +53,9 @@ class TestKaban extends StatelessWidget {
           ),
         ),
         KabanColumn(
+          minWidth: 100,
+          maxWidth: 300,
+          flex: 1,
           showHeader: false,
           children: [
             Container(

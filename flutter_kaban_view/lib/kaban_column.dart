@@ -9,13 +9,18 @@ class KabanColumn extends StatelessWidget {
       this.trailing,
       this.showHeader = true,
       required this.children,
-      this.color});
+      this.maxWidth,
+      this.minWidth,
+      this.flex,
+      this.color}):assert(flex!=null||maxWidth!=null,"Provide flex or max width value");
   final Widget? title;
   final Widget? trailing;
   final bool showHeader;
   final List<Widget> children;
   final Color? color;
-
+  final double? maxWidth;
+  final double? minWidth;
+  final int? flex;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
