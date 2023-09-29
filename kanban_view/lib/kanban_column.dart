@@ -1,19 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+
+class KabanColumnHeader extends StatelessWidget {
+  const KabanColumnHeader({super.key, this.title, this.trailing, this.bottom});
+  final Widget? title;
+  final Widget? trailing;
+  final PreferredSizeWidget? bottom;
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      expandedHeight: 70,
+      title: title,
+      floating: true,
+      pinned: true,
+      actions: trailing != null ? List.from([trailing]) : [],
+      bottom: bottom,
+    );
+  }
+}
 
 class KabanColumn extends StatelessWidget {
   const KabanColumn(
       {super.key,
-      this.title,
-      this.trailing,
-      this.showHeader = true,
+      this.header,
       required this.children,
       this.maxWidth,
       this.minWidth,
       this.flex,
-      this.color}):assert(flex!=null||maxWidth!=null,"Provide flex or maxwidth parameter");
-  final Widget? title;
-  final Widget? trailing;
-  final bool showHeader;
+      this.color})
+      : assert(flex != null || maxWidth != null,
+            "Provide flex or maxwidth parameter");
+  final Widget? header;
   final List<Widget> children;
   final Color? color;
   final double? maxWidth;
@@ -29,14 +46,11 @@ class KabanColumn extends StatelessWidget {
         color: color,
         child: CustomScrollView(
           slivers: [
-            if (showHeader)
-              SliverAppBar(
-                expandedHeight: 70,
-                title: title,
-                floating: true,
-                pinned: true,
-                actions: trailing != null ? List.from([trailing]) : [],
-              ),
+            // if (header != null && (header is SliverAppBar))
+            //  header!,
+            // if (header != null && (header is RenderObject))
+            // SliverToBoxAdapter(child: header!),
+            header!,
             SliverList(delegate: SliverChildListDelegate(children))
           ],
         ),

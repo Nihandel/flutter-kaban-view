@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kanban_view/kanban.dart';
 
 void main() {
-  runApp(const MaterialApp(home: Scaffold(body: TestKaban())));
+  runApp(const MaterialApp(debugShowCheckedModeBanner: false, home: Scaffold(body: TestKaban())));
 }
 
 class TestKaban extends StatelessWidget {
@@ -13,27 +13,44 @@ class TestKaban extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var random = Random();
-    return KanbanView(
-      children: List.generate(
-        7,
-        (index) => KabanColumn(
-          flex: index.toDouble()*index.toDouble(),
-          minWidth: 100,
-          color: Colors.red,
-          title: const Text("Column 1"),
-          trailing: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.menu),
-          ),
-          children: List.generate(
-            9,
-            (index) => const SizedBox(
-              height: 200,
-              child: Text("Test"),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: KanbanView(
+        children: List.generate(
+          10,
+          (index) => KabanColumn(
+            flex: 1+(index.toDouble()*index.toDouble())/2,
+            minWidth: 200,
+            maxWidth: 500,
+            color: Colors.red,
+            header: SliverAppBar(
+              title: Text("Column ${index + 1}"),
+              pinned: true,
+              floating: true,
+              collapsedHeight: 60,
+              expandedHeight: 100,
+              actions: [IconButton(onPressed: (){}, icon: Icon(Icons.menu))],
+              bottom: PreferredSize(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Chip(label: Text("Chip")),
+                      ],
+                    ),
+                  ),
+                  preferredSize: Size(double.infinity, 50)),
+            ),
+            children: List.generate(
+              9,
+              (index) => const SizedBox(
+                height: 200,
+                child: Text("Test"),
+              ),
             ),
           ),
-        ),
-      ).toList(),
+        ).toList(),
+      ),
     );
   }
 }

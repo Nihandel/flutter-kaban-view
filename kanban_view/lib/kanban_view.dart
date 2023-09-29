@@ -33,7 +33,7 @@ class _KanbanViewState extends State<KanbanView> {
   }
   /// custom layout 
   List<double> _getSlots(BoxConstraints constraints) {
-    double maxFlex = children.map((e) => e.flex ?? 1).reduce(
+    double maxFlex = children.where((element) => element.flex!=null).map((e) => e.flex!).reduce(
           (value, element) => value += element,
         );
     var maxWidth = constraints.maxWidth;
