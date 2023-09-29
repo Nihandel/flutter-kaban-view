@@ -12,7 +12,7 @@ class KabanColumn extends StatelessWidget {
       this.maxWidth,
       this.minWidth,
       this.flex,
-      this.color}):assert(flex!=null||maxWidth!=null,"Provide flex or max width value");
+      this.color}):assert(flex!=null||maxWidth!=null,"Provide flex or maxwidth parameter");
   final Widget? title;
   final Widget? trailing;
   final bool showHeader;

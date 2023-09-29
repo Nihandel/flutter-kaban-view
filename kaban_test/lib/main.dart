@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kaban_view/kaban_view.dart';
 
 void main() {
   runApp(const MaterialApp(home: Scaffold(body: TestKaban())));

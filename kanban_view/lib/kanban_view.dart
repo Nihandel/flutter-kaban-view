@@ -1,14 +1,14 @@
 library kaban_view;
 
-export './kaban_column.dart';
-export './kaban_item.dart';
+export 'kanban_column.dart';
+export 'kanban_item.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/rendering/sliver.dart';
 import 'package:flutter/widgets.dart';
-import 'package:kaban_view/kaban_column.dart';
+import 'package:kanban_view/kanban_column.dart';
 
 class KabanView extends StatefulWidget {
   const KabanView({super.key, this.columnsPerPage, required this.children});
