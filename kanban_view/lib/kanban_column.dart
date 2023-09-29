@@ -30,7 +30,7 @@ class KabanColumn extends StatelessWidget {
       this.color})
       : assert(flex != null || maxWidth != null,
             "Provide flex or maxwidth parameter");
-  final Widget? header;
+  final SliverAppBar? header;
   final List<Widget> children;
   final Color? color;
   final double? maxWidth;
@@ -46,11 +46,8 @@ class KabanColumn extends StatelessWidget {
         color: color,
         child: CustomScrollView(
           slivers: [
-            // if (header != null && (header is SliverAppBar))
-            //  header!,
-            // if (header != null && (header is RenderObject))
-            // SliverToBoxAdapter(child: header!),
-            header!,
+            if(header!=null)
+              header!,
             SliverList(delegate: SliverChildListDelegate(children))
           ],
         ),
