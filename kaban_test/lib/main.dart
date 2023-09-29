@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kanban_view/kanban.dart';
+import 'package:kaban_view/kanban.dart';
 void main() {
   runApp(const MaterialApp(home: Scaffold(body: TestKaban())));
 }
@@ -9,7 +9,7 @@ class TestKaban extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return KabanView(
+    return KanbanView(
       children: [
         KabanColumn(
           flex: 1,

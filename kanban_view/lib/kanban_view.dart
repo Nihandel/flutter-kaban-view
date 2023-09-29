@@ -5,8 +5,8 @@ import 'package:flutter/src/rendering/sliver.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kanban_view/kanban_column.dart';
 
-class KabanView extends StatefulWidget {
-  const KabanView({super.key, this.columnsPerPage, required this.children});
+class KanbanView extends StatefulWidget {
+  const KanbanView({super.key, this.columnsPerPage, required this.children});
 
   /// columns to show [KabanColumn]
   final List<KabanColumn> children;
@@ -15,10 +15,10 @@ class KabanView extends StatefulWidget {
   final int? columnsPerPage;
 
   @override
-  State<KabanView> createState() => _KabanViewState();
+  State<KanbanView> createState() => _KanbanViewState();
 }
 
-class _KabanViewState extends State<KabanView> {
+class _KanbanViewState extends State<KanbanView> {
   late List<KabanColumn> children;
   late List<double> sizes;
   @override

@@ -1,4 +1,4 @@
 library kanban_view;
-export 'package:kanban_view/kanban_view.dart';
-export 'package:kanban_view/kanban_column.dart';
-export 'package:kanban_view/kanban_item.dart';
+export './kanban_view.dart';
+export './kanban_column.dart';
+export './kanban_item.dart';
