@@ -20,7 +20,7 @@ class KabanColumn extends StatelessWidget {
   final Color? color;
   final double? maxWidth;
   final double? minWidth;
-  final int? flex;
+  final double? flex;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

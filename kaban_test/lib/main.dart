@@ -14,6 +14,7 @@ class TestKaban extends StatelessWidget {
       children: [
         KabanColumn(
           flex: 1,
+          minWidth: 500,
           color: Colors.red,
           title: const Text("Column 1"),
           trailing: IconButton(
@@ -29,6 +30,8 @@ class TestKaban extends StatelessWidget {
           ),
         ),
         KabanColumn(
+          minWidth: 300,
+          maxWidth: 400,
           flex: 2,
           color: Colors.red,
           title: const Text("Column 2"),
