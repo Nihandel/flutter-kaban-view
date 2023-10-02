@@ -19,8 +19,8 @@ import 'package:flutter/rendering.dart';
 //   }
 // }
 
-class KabanColumn extends StatelessWidget {
-  const KabanColumn(
+class KanbanColumn extends StatelessWidget {
+  const KanbanColumn(
       {super.key,
       this.header,
       required this.children,
@@ -54,4 +54,8 @@ class KabanColumn extends StatelessWidget {
       ),
     );
   }
+}
+
+class KanbanDraggableColumn extends KanbanColumn{
+
 }

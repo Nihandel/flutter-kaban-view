@@ -6,15 +6,15 @@ import 'package:kanban_view/kanban_column.dart';
 class KanbanView extends StatefulWidget {
   const KanbanView({super.key, required this.children});
 
-  /// columns to show [KabanColumn]
-  final List<KabanColumn> children;
+  /// columns to show [KanbanColumn]
+  final List<KanbanColumn> children;
 
   @override
   State<KanbanView> createState() => _KanbanViewState();
 }
 
 class _KanbanViewState extends State<KanbanView> {
-  late List<KabanColumn> children;
+  late List<KanbanColumn> children;
   late List<double> sizes;
   final _scrollController = ScrollController();
   @override

@@ -19,7 +19,7 @@ class TestKaban extends StatelessWidget {
       child: KanbanView(
         children: List.generate(
           10,
-          (index) => KabanColumn(
+          (index) => KanbanColumn(
             flex: 1 + (index.toDouble() * index.toDouble()),
             minWidth: 200,
             maxWidth: 500,
