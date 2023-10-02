@@ -19,6 +19,7 @@ class KanbanView extends StatefulWidget {
 class _KanbanViewState extends State<KanbanView> {
   late List<KabanColumn> children;
   late List<double> sizes;
+  final _scrollController = ScrollController();
   @override
   void initState() {
     // TODO: implement initState
@@ -65,9 +66,13 @@ class _KanbanViewState extends State<KanbanView> {
                       child: e))
                   .toList()),
         );
-        final CustomScrollView scrollView = CustomScrollView(
-          scrollDirection: Axis.horizontal,
-          slivers: [row],
+        final scrollView = Scrollbar(
+          controller: _scrollController,
+          child: CustomScrollView(
+            controller: _scrollController,
+            scrollDirection: Axis.horizontal,
+            slivers: [row],
+          ),
         );
 
         return SizedBox(

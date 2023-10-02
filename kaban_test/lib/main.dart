@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:kanban_view/kanban.dart';
 
 void main() {
-  runApp(const MaterialApp(debugShowCheckedModeBanner: false, home: Scaffold(body: TestKaban())));
+  runApp(const MaterialApp(
+      debugShowCheckedModeBanner: false, home: Scaffold(body: TestKaban())));
 }
 
 class TestKaban extends StatelessWidget {
@@ -19,7 +20,7 @@ class TestKaban extends StatelessWidget {
         children: List.generate(
           10,
           (index) => KabanColumn(
-            flex: 1+(index.toDouble()*index.toDouble())/2,
+            flex: 1 + (index.toDouble() * index.toDouble()),
             minWidth: 200,
             maxWidth: 500,
             color: Colors.red,
@@ -29,7 +30,7 @@ class TestKaban extends StatelessWidget {
               floating: true,
               collapsedHeight: 60,
               expandedHeight: 100,
-              actions: [IconButton(onPressed: (){}, icon: Icon(Icons.menu))],
+              actions: [IconButton(onPressed: () {}, icon: Icon(Icons.menu))],
               bottom: PreferredSize(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -43,10 +44,7 @@ class TestKaban extends StatelessWidget {
             ),
             children: List.generate(
               9,
-              (index) => const SizedBox(
-                height: 200,
-                child: Text("Test"),
-              ),
+              (index) => KanbanItem(data: index, child: SizedBox(height: 200, child: Text("Card $index"))),
             ),
           ),
         ).toList(),
