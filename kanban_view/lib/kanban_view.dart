@@ -4,13 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:kanban_view/kanban_column.dart';
 
 class KanbanView extends StatefulWidget {
-  const KanbanView({super.key, this.columnsPerPage, required this.children});
+  const KanbanView({super.key, required this.children});
 
   /// columns to show [KabanColumn]
   final List<KabanColumn> children;
-
-  /// how many columns are visible without scrolling
-  final int? columnsPerPage;
 
   @override
   State<KanbanView> createState() => _KanbanViewState();
@@ -32,9 +29,13 @@ class _KanbanViewState extends State<KanbanView> {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
   }
-  /// custom layout 
+
+  /// custom layout
   List<double> _getSlots(BoxConstraints constraints) {
-    double maxFlex = children.where((element) => element.flex!=null).map((e) => e.flex!).reduce(
+    double maxFlex = children
+        .where((element) => element.flex != null)
+        .map((e) => e.flex!)
+        .reduce(
           (value, element) => value += element,
         );
     var maxWidth = constraints.maxWidth;
