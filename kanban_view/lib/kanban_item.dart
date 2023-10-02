@@ -6,11 +6,15 @@ class KanbanItem<T> extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
-    return Draggable<KanbanItem<T>>(
-      feedback: Card(child: child),
-      child: Card(
-        child: child,
-      ),
+    return LayoutBuilder(
+      builder: (context,constraints) {
+        return Draggable<KanbanItem<T>>(
+          feedback: ConstrainedBox(constraints: constraints, child: Card(child: child)),
+          child: Card(
+            child: child,
+          ),
+        );
+      }
     );
   }
 }
