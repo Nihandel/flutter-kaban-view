@@ -16,20 +16,23 @@ class KanbanColumn extends StatelessWidget implements IKanbanColumn {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return SizedBox(
-      width: size.width,
-      height: size.height,
-      child: Card(
-        color: color,
-        child: CustomScrollView(
-          slivers: [
-            if (header != null) header!,
-            SliverList(delegate: SliverChildListDelegate(children))
-          ],
+    // var size = MediaQuery.of(context).size;
+    return LayoutBuilder(builder: (context, constraints) {
+      var size = Size(constraints.maxWidth, constraints.maxHeight);
+      return SizedBox(
+        width: size.width,
+        height: size.height,
+        child: Card(
+          color: color,
+          child: CustomScrollView(
+            slivers: [
+              if (header != null) header!,
+              SliverList(delegate: SliverChildListDelegate(children))
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   final SliverAppBar? header;
@@ -45,4 +48,59 @@ class KanbanColumn extends StatelessWidget implements IKanbanColumn {
 
   @override
   double? minWidth;
+}
+
+class KanbanDraggableColumn extends StatelessWidget
+    implements IKanbanDraggableColumn {
+  KanbanDraggableColumn(
+      {super.key,
+      required this.child,
+      required this.feedback,
+      required this.opacity});
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      return Draggable<IKanbanColumn>(
+          feedback: Opacity(
+              opacity: opacity,
+              child: SizedBox(
+                  width: constraints.maxWidth,
+                  height: constraints.maxHeight,
+                  child: feedback)),
+          child: child);
+    });
+  }
+
+  @override
+  IKanbanColumn child;
+  @override
+  Widget feedback;
+
+  @override
+  double opacity;
+
+  @override
+  double? get flex => child.flex;
+
+  @override
+  double? get maxWidth => child.maxWidth;
+
+  @override
+  double? get minWidth => child.minWidth;
+
+  @override
+  set flex(double? _flex) {
+    child.flex = _flex;
+  }
+
+  @override
+  set maxWidth(double? _maxWidth) {
+    child.maxWidth = maxWidth;
+  }
+
+  @override
+  set minWidth(double? _minWidth) {
+    child.minWidth = _minWidth;
+  }
 }

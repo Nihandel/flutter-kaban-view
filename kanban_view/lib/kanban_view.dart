@@ -77,10 +77,16 @@ class _KanbanViewState extends State<KanbanView> {
           ),
         );
 
-        return SizedBox(
-          width: constraints.maxWidth,
-          height: constraints.maxHeight,
-          child: scrollView,
+        return DragTarget<IKanbanColumn>(
+          builder: (context, candidateData, rejectedData) => SizedBox(
+            width: constraints.maxWidth,
+            height: constraints.maxHeight,
+            child: scrollView,
+          ),
+          hitTestBehavior: HitTestBehavior.opaque,
+          onMove: (details) {
+            
+          },
         );
       }),
     );
