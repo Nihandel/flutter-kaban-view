@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:kanban_view/i_kanban_abstractions.dart';
+import 'package:kanban_view/kanban.dart';
 
-class KanbanColumn extends StatelessWidget implements IKanbanColumn {
+class KanbanColumn<T> extends StatelessWidget implements IKanbanColumn {
   KanbanColumn(
       {super.key,
       this.header,
@@ -22,13 +23,15 @@ class KanbanColumn extends StatelessWidget implements IKanbanColumn {
       return SizedBox(
         width: size.width,
         height: size.height,
-        child: Card(
-          color: color,
-          child: CustomScrollView(
-            slivers: [
-              if (header != null) header!,
-              SliverList(delegate: SliverChildListDelegate(children))
-            ],
+        child: DragTarget<KanbanItem<T>>(
+          builder: (context, candidateData, rejectedData) => Card(
+            color: color,
+            child: CustomScrollView(
+              slivers: [
+                if (header != null) header!,
+                SliverList(delegate: SliverChildListDelegate(children))
+              ],
+            ),
           ),
         ),
       );

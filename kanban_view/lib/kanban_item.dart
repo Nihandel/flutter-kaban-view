@@ -6,8 +6,11 @@ class KanbanItem<T> extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: child,
+    return Draggable<KanbanItem<T>>(
+      feedback: Card(child: child),
+      child: Card(
+        child: child,
+      ),
     );
   }
 }
