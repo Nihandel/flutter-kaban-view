@@ -71,6 +71,7 @@ class _KanbanViewState extends State<KanbanView> {
         final scrollView = Scrollbar(
           controller: _scrollController,
           child: CustomScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
             controller: _scrollController,
             scrollDirection: Axis.horizontal,
             slivers: [row],
@@ -85,7 +86,10 @@ class _KanbanViewState extends State<KanbanView> {
           ),
           hitTestBehavior: HitTestBehavior.opaque,
           onMove: (details) {
-            
+            // if(details.offset.dx<20){
+            //   _scrollController.animateTo(_scrollController.offset-100,curve: Curves.bounceIn,duration: const Duration(milliseconds: 100));
+            // }
+            // print("${details?.offset ?? "no data"}");
           },
         );
       }),

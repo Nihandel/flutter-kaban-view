@@ -62,6 +62,7 @@ class KanbanDraggableColumn extends StatelessWidget
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return Draggable<IKanbanColumn>(
+          data: this,
           feedback: Opacity(
               opacity: opacity,
               child: SizedBox(
