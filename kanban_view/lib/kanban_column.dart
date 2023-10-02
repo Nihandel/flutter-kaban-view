@@ -1,26 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:kanban_view/i_kanban_abstractions.dart';
 
-// class KabanColumnHeader extends StatelessWidget {
-//   const KabanColumnHeader({super.key, this.title, this.trailing, this.bottom});
-//   final Widget? title;
-//   final Widget? trailing;
-//   final PreferredSizeWidget? bottom;
-//   @override
-//   Widget build(BuildContext context) {
-//     return SliverAppBar(
-//       expandedHeight: 70,
-//       title: title,
-//       floating: true,
-//       pinned: true,
-//       actions: trailing != null ? List.from([trailing]) : [],
-//       bottom: bottom,
-//     );
-//   }
-// }
-
-class KanbanColumn extends StatelessWidget {
-  const KanbanColumn(
+class KanbanColumn extends StatelessWidget implements IKanbanColumn {
+  KanbanColumn(
       {super.key,
       this.header,
       required this.children,
@@ -30,12 +13,7 @@ class KanbanColumn extends StatelessWidget {
       this.color})
       : assert(flex != null || maxWidth != null,
             "Provide flex or maxwidth parameter");
-  final SliverAppBar? header;
-  final List<Widget> children;
-  final Color? color;
-  final double? maxWidth;
-  final double? minWidth;
-  final double? flex;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -46,16 +24,25 @@ class KanbanColumn extends StatelessWidget {
         color: color,
         child: CustomScrollView(
           slivers: [
-            if(header!=null)
-              header!,
+            if (header != null) header!,
             SliverList(delegate: SliverChildListDelegate(children))
           ],
         ),
       ),
     );
   }
-}
 
-class KanbanDraggableColumn extends KanbanColumn{
+  final SliverAppBar? header;
+  final List<Widget> children;
 
+  final Color? color;
+
+  @override
+  double? flex;
+
+  @override
+  double? maxWidth;
+
+  @override
+  double? minWidth;
 }

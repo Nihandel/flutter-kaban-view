@@ -1,20 +1,21 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:kanban_view/i_kanban_abstractions.dart';
 import 'package:kanban_view/kanban_column.dart';
 
 class KanbanView extends StatefulWidget {
   const KanbanView({super.key, required this.children});
 
   /// columns to show [KanbanColumn]
-  final List<KanbanColumn> children;
+  final List<IKanbanColumn> children;
 
   @override
   State<KanbanView> createState() => _KanbanViewState();
 }
 
 class _KanbanViewState extends State<KanbanView> {
-  late List<KanbanColumn> children;
+  late List<IKanbanColumn> children;
   late List<double> sizes;
   final _scrollController = ScrollController();
   @override
